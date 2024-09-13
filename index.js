@@ -1,15 +1,21 @@
+require('dotenv').config();  // Load environment variables from .env file
 const express = require('express');
 const app = express();
-const port=4000;
 
-app.get('/',(req,res)=>{
-    res.send("deployment in vercel");
-})
+// Use the port from the .env file, or default to 3000 if not defined
+const PORT = process.env.PORT;
 
-app.get('/home',(req,res)=>{
-    res.send("this is home page")
-})
 
-app.listen(port,(req,res)=>{
-    console.log(`app is listening on ${port}`)
-})
+app.get("/", (req, res) => {
+  res.send("deployment in vercel");
+});
+
+app.get("/home", (req, res) => {
+  res.send("this is home page");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
+
